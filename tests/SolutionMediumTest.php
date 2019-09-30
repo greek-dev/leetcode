@@ -3,34 +3,15 @@
 
 use PHPUnit\Framework\TestCase;
 use src\ListNode;
-use src\Solution;
+use src\SolutionMedium;
 
-class SolutionTest extends TestCase
+class SolutionMediumTest extends TestCase
 {
     private $solution;
 
     protected function setUp(): void
     {
-        parent::setUp();
-        $this->solution = new Solution();
-    }
-
-    /**
-     * @param $nums
-     * @param $target
-     * @param $output
-     * @dataProvider twoSumProvider
-     */
-    public function testTwoSum($nums, $target, $output)
-    {
-        $this->assertEquals($this->solution->twoSum($nums, $target), $output);
-    }
-
-    public function twoSumProvider()
-    {
-        return [
-            [[2, 7, 4, 3, 2], 9, [0, 1]]
-        ];
+        $this->solution = new SolutionMedium();
     }
 
     /**
@@ -87,46 +68,4 @@ class SolutionTest extends TestCase
         ];
     }
 
-    /**
-     * @param $input1
-     * @param $input2
-     * @param $output
-     * @dataProvider findMedianSortedArraysProvider
-     */
-    public function testFindMedianSortedArrays($input1, $input2, $output)
-    {
-        $this->assertEquals($this->solution->findMedianSortedArrays($input1, $input2), $output);
-    }
-
-    public function findMedianSortedArraysProvider()
-    {
-        return [
-            [[1, 3], [2], 2],
-            [[1, 2], [3, 4], 2.5],
-            [[], [1], 1],
-            [[2], [], 2],
-            [[], [2, 3], 2.5],
-            [[3], [-2, -1], -1],
-        ];
-    }
-
-    /**
-     * @param $input
-     * @param $output
-     * @dataProvider reverseProvider
-     */
-    public function testReverse($input, $output)
-    {
-        $this->assertEquals($this->solution->reverse($input), $output);
-    }
-
-    public function reverseProvider()
-    {
-        return [
-            [123, 321],
-            [-123, -321],
-            [120, 21],
-            [1534236469, 0],
-        ];
-    }
 }
