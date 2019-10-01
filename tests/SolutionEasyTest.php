@@ -89,4 +89,45 @@ class SolutionEasyTest extends TestCase
             ["MCMXCIV", 1994],
         ];
     }
+
+    /**
+     * @param $input
+     * @param $output
+     * @dataProvider longestCommonPrefixProvider
+     */
+    public function testLongestCommonPrefix($input, $output)
+    {
+        $this->assertEquals($this->solution->longestCommonPrefix($input), $output);
+    }
+
+    public function longestCommonPrefixProvider()
+    {
+        return [
+            [['zzzzzzzzzzzzzz', 'zzzzzzzzzzzzzz'], 'zzzzzzzzzzzzzz'],
+            [["flower", "flow", "flight"], 'fl'],
+            [["dog", "racecar", "car"], ''],
+            [[], ''],
+        ];
+    }
+    /**
+     * @param $input
+     * @param $output
+     * @dataProvider isValidProvider
+     */
+    public function testIsValid($input, $output)
+    {
+        $this->assertEquals($this->solution->isValid($input), $output);
+    }
+
+    public function isValidProvider()
+    {
+        return [
+            ['()', true],
+            ['({})', true],
+            ['(()()({})[()])', true],
+            ['(', false],
+            [')', false],
+            ['([)', false],
+        ];
+    }
 }

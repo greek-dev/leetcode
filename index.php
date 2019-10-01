@@ -1,8 +1,15 @@
 <?php
 
+use src\{Helper, SolutionEasy, SolutionMedium, SolutionHard};
+
 require __DIR__ . "/vendor/autoload.php";
 
-echo 'Success';
+$easy = new SolutionEasy();
+$medium = new SolutionMedium();
+$hard = new SolutionHard();
+
+Helper::print('-----');
+
 
 
 
