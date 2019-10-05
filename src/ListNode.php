@@ -22,4 +22,14 @@ class ListNode
     {
         $this->val = $val;
     }
+
+    public static function createByItems(int ...$items): ?ListNode
+    {
+        $link = $list = new ListNode(0);
+        foreach ($items as $item) {
+            $link->next = new ListNode($item);
+            $link = $link->next;
+        }
+        return $list->next;
+    }
 }

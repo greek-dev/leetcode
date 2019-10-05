@@ -1,6 +1,8 @@
 <?php
 
 namespace src;
+use SplStack;
+
 /**
  * Class SolutionEasy
  * @package src
@@ -135,13 +137,13 @@ class SolutionEasy
             ']' => '[',
         ];
 
-        $stack = new \SplStack();
+        $stack = new SplStack();
         for ($i = 0; $i < strlen($s); $i++) {
             if ($braces[$s[$i]]) {
                 $stack->rewind();
                 if ($stack->current() === $braces[$s[$i]]) {
                     $stack->pop();
-                }else{
+                } else {
                     return false;
                 }
             } else {
@@ -149,5 +151,78 @@ class SolutionEasy
             }
         }
         return $stack->isEmpty();
+    }
+
+    /**
+     * https://leetcode.com/problems/merge-two-sorted-lists
+     * @param ListNode|null $l1
+     * @param ListNode|null $l2
+     * @return ListNode|null
+     */
+    public function mergeTwoLists(?ListNode $l1, ?ListNode $l2): ?ListNode
+    {
+//        if ($l1 === null) {
+//            return $l2;
+//        }
+//        if ($l2 === null) {
+//            return $l1;
+//        }
+//        if ($l1->val < $l2->val) {
+//            $l1->next = $this->mergeTwoLists($l1->next, $l2);
+//            return $l1;
+//        } else {
+//            $l2->next = $this->mergeTwoLists($l1, $l2->next);
+//            return $l2;
+//        }
+
+        $link = $result = new ListNode(0);
+        while ($l1 !== null && $l2 !== null) {
+            if ($l1->val < $l2->val) {
+                $link = $link->next = new ListNode($l1->val);
+                $l1 = $l1->next;
+            } else {
+                $link = $link->next = new ListNode($l2->val);
+                $l2 = $l2->next;
+            }
+        }
+        $link->next = $l1 ?? $l2;
+        return $result->next;
+    }
+
+    /**
+     * https://leetcode.com/problems/remove-duplicates-from-sorted-array
+     * @param array $nums
+     * @return int
+     */
+    public function removeDuplicates(array &$nums): int
+    {
+        if ($count = count($nums)) {
+            for ($i = 0, $j = 1; $j < $count; $j++) {
+                if ($nums[$i] !== $nums[$j]) {
+                    $nums[++$i] = $nums[$j];
+                }
+            }
+            return $i + 1;
+        }
+        return 0;
+    }
+
+    /**
+     * https://leetcode.com/problems/remove-element
+     * @param array $nums
+     * @param int $val
+     * @return int
+     */
+    public function removeElement(array &$nums, int $val): int
+    {
+        reset($nums);
+        while (current($nums) !== false) {
+            if (current($nums) === $val) {
+                unset($nums[key($nums)]);
+                continue;
+            }
+            next($nums);
+        }
+        return count($nums);
     }
 }

@@ -29,21 +29,11 @@ class SolutionMediumTest extends TestCase
     {
         return [
             [
-                $this->getListNote(2, 4, 3),
-                $this->getListNote(5, 6, 4),
-                $this->getListNote(7, 0, 8)
+                ListNode::createByItems(2, 4, 3),
+                ListNode::createByItems(5, 6, 4),
+                ListNode::createByItems(7, 0, 8),
             ]
         ];
-    }
-
-    private function getListNote(int ...$items): ListNode
-    {
-        $link = $list = new ListNode(0);
-        foreach ($items as $item) {
-            $link->next = new ListNode($item);
-            $link = $link->next;
-        }
-        return $list->next;
     }
 
     /**

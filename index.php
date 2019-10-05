@@ -1,6 +1,6 @@
 <?php
 
-use src\{Helper, SolutionEasy, SolutionMedium, SolutionHard};
+use src\{Helper, ListNode, SolutionEasy, SolutionMedium, SolutionHard};
 
 require __DIR__ . "/vendor/autoload.php";
 

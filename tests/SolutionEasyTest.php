@@ -1,6 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use src\ListNode;
 use src\SolutionEasy;
 
 class SolutionEasyTest extends TestCase
@@ -109,6 +110,7 @@ class SolutionEasyTest extends TestCase
             [[], ''],
         ];
     }
+
     /**
      * @param $input
      * @param $output
@@ -128,6 +130,69 @@ class SolutionEasyTest extends TestCase
             ['(', false],
             [')', false],
             ['([)', false],
+        ];
+    }
+
+    /**
+     * @param $list1
+     * @param $list2
+     * @param $output
+     * @dataProvider mergeTwoListsProvider
+     */
+    public function testMergeTwoLists($list1, $list2, $output)
+    {
+        $this->assertEquals($this->solution->mergeTwoLists($list1, $list2), $output);
+    }
+
+    public function mergeTwoListsProvider()
+    {
+        return [
+            [
+                ListNode::createByItems(1, 1, 3),
+                ListNode::createByItems(2, 3, 4),
+                ListNode::createByItems(1, 1, 2, 3, 3, 4),
+            ]
+        ];
+    }
+
+    /**
+     * @param $input
+     * @param $output
+     * @dataProvider removeDuplicatesProvider
+     */
+    public function testRemoveDuplicates($input, $output)
+    {
+        $count = $this->solution->removeDuplicates($input);
+        $this->assertEquals($count, count($output));
+        $this->assertEquals(array_slice($input, 0, $count), $output);
+    }
+
+    public function removeDuplicatesProvider()
+    {
+        return [
+            [[1, 1, 2], [1, 2]],
+            [[0, 0, 1, 1, 1, 2, 2, 3, 3, 4], [0, 1, 2, 3, 4]],
+        ];
+    }
+
+    /**
+     * @param $input1
+     * @param $input2
+     * @param $output
+     * @dataProvider removeElementProvider
+     */
+    public function testRemoveElement($input1, $input2, $output)
+    {
+        $count = $this->solution->removeElement($input1, $input2);
+        $this->assertEquals($count, count($output));
+        $this->assertEquals(array_slice($input1, 0, $count), $output);
+    }
+
+    public function removeElementProvider()
+    {
+        return [
+            [[3, 2, 2, 3], 3, [2, 2]],
+            [[0, 1, 2, 2, 3, 0, 4, 2], 2, [0, 1, 3, 0, 4]]
         ];
     }
 }
