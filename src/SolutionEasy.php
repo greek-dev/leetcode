@@ -1,6 +1,7 @@
 <?php
 
 namespace src;
+
 use SplStack;
 
 /**
@@ -225,4 +226,55 @@ class SolutionEasy
         }
         return count($nums);
     }
+
+    /**
+     * https://leetcode.com/problems/implement-strstr
+     * @param string $haystack
+     * @param string $needle
+     * @return int
+     */
+    function strStr(string $haystack, string $needle): int
+    {
+        $needleLen = strlen($needle);
+        $haystackLen = strlen($haystack);
+        if (!$needleLen) return 0;
+        if ($haystackLen < $needleLen) return -1;
+
+        $jLen = intval($needleLen / 2) + $needleLen % 2;
+        $jLastIx = $needleLen - 1;
+        for ($i = 0; $i < $haystackLen; $i++) {
+            for ($j = 0; $j < $jLen; $j++) {
+                if ($haystack[$i + $j] !== $needle[$j] || $haystack[$i + $jLastIx - $j] !== $needle[$jLastIx - $j]) {
+                    break;
+                }
+                if ($j == $jLen - 1) {
+                    return $i;
+                }
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * https://leetcode.com/problems/search-insert-position
+     * @param array $nums
+     * @param int $target
+     * @return int
+     */
+    public function searchInsert(array $nums, int $target): int
+    {
+        $min = 0;
+        $max = count($nums) - 1;
+        while ($min <= $max) {
+            $mid = intval($min + ($max - $min) * 0.5);
+            if ($nums[$mid] < $target) {
+                $min = ++$mid;
+            }else{
+                $max = --$mid;
+            }
+        }
+        return $min;
+    }
+
+
 }

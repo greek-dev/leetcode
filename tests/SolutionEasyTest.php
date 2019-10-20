@@ -195,4 +195,45 @@ class SolutionEasyTest extends TestCase
             [[0, 1, 2, 2, 3, 0, 4, 2], 2, [0, 1, 3, 0, 4]]
         ];
     }
+
+    /**
+     * @param $haystack
+     * @param $needle
+     * @param $output
+     * @dataProvider strStrProvider
+     */
+    public function testStrStr($haystack, $needle, $output)
+    {
+        $this->assertEquals($this->solution->strStr($haystack, $needle), $output);
+    }
+
+    public function strStrProvider()
+    {
+        return [
+            ['hello', 'll', 2],
+            ['aaaaa', 'bba', -1],
+            ['bbbaa', 'bba', 1],
+        ];
+    }
+
+    /**
+     * @param $nums
+     * @param $target
+     * @param $output
+     * @dataProvider searchInsertProvider
+     */
+    public function testSearchInsert($nums, $target, $output)
+    {
+        $this->assertEquals($this->solution->searchInsert($nums, $target), $output);
+    }
+
+    public function searchInsertProvider()
+    {
+        return [
+            [[1,3,5,6], 5, 2],
+            [[1,3,5,6], 2, 1],
+            [[1,3,5,6], 7, 4],
+            [[1,3,5,6], 0, 0],
+        ];
+    }
 }

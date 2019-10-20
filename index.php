@@ -8,7 +8,7 @@ $easy = new SolutionEasy();
 $medium = new SolutionMedium();
 $hard = new SolutionHard();
 
-Helper::print('-----');
+Helper::print('');
 
 
 

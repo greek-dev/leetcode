@@ -58,4 +58,20 @@ class SolutionMediumTest extends TestCase
         ];
     }
 
+    /**
+     * @param $input
+     * @param $output
+     * @dataProvider productExceptSelfProvider
+     */
+    public function testProductExceptSelf($input, $output)
+    {
+        $this->assertEquals($this->solution->productExceptSelf($input), $output);
+    }
+
+    public function productExceptSelfProvider()
+    {
+        return [
+            [[1, 2, 3, 4], [24, 12, 8, 6]],
+        ];
+    }
 }

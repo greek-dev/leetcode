@@ -61,4 +61,26 @@ class SolutionMedium
         }
         return $count;
     }
+
+    /**
+     * https://leetcode.com/problems/product-of-array-except-self
+     * @param array $nums
+     * @return array
+     */
+    function productExceptSelf(array $nums): array
+    {
+        $result = [];
+        $count = count($nums);
+
+        $result[0] = 1;
+        for ($i = 1; $i < $count; $i++) {
+            $result[$i] = $nums[$i - 1] * $result[$i - 1];
+        }
+        $tmp = 1;
+        for ($i = $count - 1; $i >= 0; $i--) {
+            $result[$i] *= $tmp;
+            $tmp *= $nums[$i];
+        }
+        return $result;
+    }
 }
