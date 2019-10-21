@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use src\ListNode;
-use src\SolutionEasy;
+use src\Algorithms\ListNode;
+use src\Algorithms\SolutionEasy;
 
 class SolutionEasyTest extends TestCase
 {

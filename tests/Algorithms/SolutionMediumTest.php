@@ -2,8 +2,8 @@
 
 
 use PHPUnit\Framework\TestCase;
-use src\ListNode;
-use src\SolutionMedium;
+use src\Algorithms\ListNode;
+use src\Algorithms\SolutionMedium;
 
 class SolutionMediumTest extends TestCase
 {

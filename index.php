@@ -1,14 +1,21 @@
 <?php
 
-use src\{Helper, ListNode, SolutionEasy, SolutionMedium, SolutionHard};
+use src\{Factory, Helper};
+use src\Database\{SqlEasy};
+use src\Algorithms\{ListNode, SolutionEasy, SolutionMedium, SolutionHard};
 
-require __DIR__ . "/vendor/autoload.php";
+require __DIR__ . "/config/main.php";
 
 $easy = new SolutionEasy();
 $medium = new SolutionMedium();
 $hard = new SolutionHard();
 
-Helper::print('');
+$print = Factory::getDb()
+    ->query(SqlEasy::combineTwoTables())
+    ->fetch();
+
+Helper::print($print);
+
 
 
 

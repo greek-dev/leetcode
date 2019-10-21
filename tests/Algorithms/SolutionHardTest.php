@@ -2,7 +2,7 @@
 
 
 use PHPUnit\Framework\TestCase;
-use src\SolutionHard;
+use src\Algorithms\SolutionHard;
 
 class SolutionHardTest extends TestCase
 {
